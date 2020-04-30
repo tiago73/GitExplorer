@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import {Header, RepositorioInfo, Issues} from './styles';
 import LogoImg from '../../assets/logo.svg';
 import { FiChevronRight, FiChevronLeft,FiStar,} from 'react-icons/fi'
-import { AiOutlineFork} from 'react-icons/ai'
+import { AiOutlineFork,AiFillFolderOpen} from 'react-icons/ai'
 import {useRouteMatch,Link} from 'react-router-dom';
 import api from "../../service/api";
 
@@ -69,15 +69,16 @@ return(
         <ul>
           <li>
             <strong>{repositorio.stargazers_count}</strong>
-           < FiStar size={20}/>
+
+           <span> < FiStar size={20}/> Stars</span>
           </li>
           <li>
             <strong>{repositorio.forks_count}</strong>
-            <AiOutlineFork size={20}/>
+            <span><AiOutlineFork size={20}/> Forks</span>
           </li>
           <li>
             <strong>{repositorio.open_issues_count}</strong>
-            <span>Issues Abertas</span>
+           <span> <AiFillFolderOpen size={20} />Issues Abertas</span>
           </li>
         </ul>
     </RepositorioInfo>
