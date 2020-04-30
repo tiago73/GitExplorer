@@ -1,9 +1,13 @@
 import styled,{css} from "styled-components";
 import {shade} from "polished";
+
 interface FormProps{
     hasError:boolean;
 }
 
+export const Logo=styled.img`
+margin-top:80px;
+`;
 export const Title = styled.h1`
 font-size: 48px;
 color: #3A3A3A;

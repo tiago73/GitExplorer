@@ -2,14 +2,14 @@ import React,{useState, FormEvent,useEffect} from "react";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {Link} from 'react-router-dom';
 
 import api from '../../service/api';
-import {FiChevronRight, FiAlertCircle} from 'react-icons/fi';
+import {FiChevronRight} from 'react-icons/fi';
 import LogoImg from '../../assets/logo.svg';
 
-import {Title, Form,Repositorio,Error} from "./styles";
-import Repository from "../Repository";
-
+import {Title, Form,Repositorio,Error,Logo} from "./styles";
+//import Repository from "../Repository";
 
 interface Repository{
     full_name: string;
@@ -70,7 +70,7 @@ const Dashboard: React.FC = () => {
 
     return (
         <>
-        <img src={LogoImg} alt="GitHub EXplorer"/>
+        <Logo src={LogoImg} alt="GitHub EXplorer"/>
         <Title>Explore repository no GitHub</Title>
 
         <Form hasError={!!inputError} onSubmit={handleAddRepository}>
@@ -82,7 +82,7 @@ const Dashboard: React.FC = () => {
 
         <Repositorio>
             {repositories.map((Repository)=>(
-                            <a key={Repository.full_name} href="teste">
+                            <Link key={Repository.full_name} to={`/Repository/${Repository.full_name}`}>
                             <img src={Repository.owner.avatar_url} alt={Repository.owner.login}/>
                             <div>
              <strong>{Repository.full_name}</strong>
@@ -90,11 +90,11 @@ const Dashboard: React.FC = () => {
                             </div>
                             <FiChevronRight size={20}/>
 
-                        </a>
+                        </Link>
             ))}
         </Repositorio>
 
         </>
-        )
+    )
 }
 export default Dashboard;
