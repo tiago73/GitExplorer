@@ -19,11 +19,11 @@ interface Repository{
         avatar_url: string;
     };
 }
-
 toast.configure()
 
 
 const Dashboard: React.FC = () => {
+
     const [newRepo, setNewRepo] = useState('');
 
     const [repositories, setRepositories] = useState<Repository[]>(()=>{
@@ -35,6 +35,7 @@ const Dashboard: React.FC = () => {
         }
         return [];
     });
+
     useEffect(()=> {
         localStorage.setItem('@GithubExplorer:repositories',
         JSON.stringify(repositories));
@@ -82,15 +83,14 @@ const Dashboard: React.FC = () => {
 
         <Repositorio>
             {repositories.map((Repository)=>(
-                            <Link key={Repository.full_name} to={`/Repository/${Repository.full_name}`}>
-                            <img src={Repository.owner.avatar_url} alt={Repository.owner.login}/>
-                            <div>
-             <strong>{Repository.full_name}</strong>
-             <p>{Repository.description}</p>
-                            </div>
-                            <FiChevronRight size={20}/>
-
-                        </Link>
+               <Link key={Repository.full_name} to={`/Repository/${Repository.full_name}`}>
+                    <img src={Repository.owner.avatar_url} alt={Repository.owner.login}/>
+                    <div>
+                        <strong>{Repository.full_name}</strong>
+                        <p>{Repository.description}</p>
+                    </div>
+                    <FiChevronRight size={20}/>
+               </Link>
             ))}
         </Repositorio>
 

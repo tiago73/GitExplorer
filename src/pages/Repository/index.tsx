@@ -31,7 +31,9 @@ interface Issuer{
  }
 }
 const Repository: React.FC = () => {
+
     const [repositorio, sertRepository] = useState<Repository | null>(null)
+
     const[issues, setIssues] = useState<Issuer[]>([]);
 
     const {params}=useRouteMatch<RepositoryParems>();
